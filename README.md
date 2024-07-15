@@ -1,1 +1,1 @@
-# IntelliAIPlatform
+# AI Service Platform
