@@ -28,7 +28,7 @@
 	},
 
 	// Uncomment when using a ptrace-based debugger like C++, Go, and Rust
-	"runArgs": [ "--ipc=host"]  //"--gpus=all" ,
+	"runArgs": [ "--ipc=host"],  //"--gpus=all" ,
 
 	// Uncomment to use the Docker CLI from inside the container. See https://aka.ms/vscode-remote/samples/docker-from-docker.
 	//"mounts": [ "source=${localWorkspaceFolder},target=/workspaces,type=bind" ]  
@@ -43,6 +43,7 @@
 
 	// Uncomment the next line to run commands after the container is created.
 	// "postCreateCommand": "cat /etc/os-release",
+	"postCreateCommand": "sudo chown -R debsen:debsen . && git config --global user.email debayan.sen1994@gmail.com && git config --global user.name neelsen1994"
 
 	// Configure tool-specific properties.
 	// "customizations": {},
