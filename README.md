@@ -8,7 +8,7 @@ This repository contains a collection of AI services organized using a microserv
 2. **Object Tracking**
 3. **Model Training**
 4. **Data Processing**
-5. **API Gateway**
+5. **Hybrid API Gateway**
 
 ## Getting Started
 
