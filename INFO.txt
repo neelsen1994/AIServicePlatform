@@ -1,0 +1,33 @@
+python detect.py --weights runs/train/exp/weights/best.pt --source temp_uploaded_images\abc.jpg
+
+rtsp://admin:Mettenhof@10.16.12.128:554
+
+rtsp://admin:Mettenhof@10.16.12.173:554
+
+python detect.py --weights runs/train/exp/weights/best.pt --source rtsp://admin:Mettenhof@10.16.12.173:554
+
+openVPN userId: shared
+openVPN Password: fGmTZcuDe7!
+
+https://10.16.12.128
+https://10.16.12.173
+=> IP-Adressen für Kameras
+You can log in with username admin and Password Mettenhof
+
+MOT - deepsort
+https://learnopencv.com/understanding-multiple-object-tracking-using-deepsort/
+
+https://github.com/theAIGuysCode/yolov4-deepsort/tree/master
+
+Docker Imshow:
+
+https://jerin-electronics.medium.com/docker-now-ep1-python-opencv-in-docker-1dda564672c3
+
+YOLOv8:
+
+yolo task=detect mode=train model=yolov8s.pt data=dataset/data.yaml imgsz=640 epochs=25 name=yolov8_turkey   ---optional batch=16
+yolo task=detect mode=predict model=runs/detect/yolov8_turkey/weights/best.pt conf=0.25 source=../../ObjectTracker/output_video.mp4   ---optional batch=16
+
+GIT:
+
+git config --global core.autocrlf true
