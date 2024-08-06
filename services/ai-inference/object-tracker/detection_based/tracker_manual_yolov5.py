@@ -26,14 +26,14 @@ def remove_duplicates(input_dict):
     return result_dict
 
 # Load the YOLOv5 model
-model = torch.hub.load('ultralytics/yolov5', 'custom', path='runs/train/exp/weights/best.pt', force_reload=True)
+model = torch.hub.load('ultralytics/yolov5', 'custom', path='models/best_yolov5.pt', force_reload=True)
 
 # Set the confidence threshold
 CONFIDENCE_THRESHOLD = 0.5
 
 # Path to the video file
-video_path = '..\..\ObjectTracker\output_video.mp4'
-output_video_path = 'output_tracker_turkey.mp4'
+video_path = '.\data\input_video.mp4'
+output_video_path = '.\data\output_tracker_yolov5.mp4'
 
 # Open the video file
 cap = cv2.VideoCapture(video_path)

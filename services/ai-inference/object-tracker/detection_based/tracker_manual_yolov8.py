@@ -27,14 +27,14 @@ def remove_duplicates(input_dict):
     return result_dict
 
 # Load the YOLOv5 model
-model = YOLO("runs/detect/yolov8_turkey/weights/best.pt", "v8")
+model = YOLO("./models/best_yolov8.pt", "v8")
 
 # Set the confidence threshold
 CONFIDENCE_THRESHOLD = 0.5
 
 # Path to the video file
-video_path = '.\output_video.mp4'
-output_video_path = 'output_tracker_turkey_yolov8.mp4'
+video_path = '.\data\input_video.mp4'
+output_video_path = '.\data\output_tracker_yolov8.mp4'
 
 # Open the video file
 cap = cv2.VideoCapture(video_path)
