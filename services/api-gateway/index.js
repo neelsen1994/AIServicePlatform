@@ -22,6 +22,12 @@ app.use(cors({
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
+// Ensure 'uploads' folder exists
+const uploadsDir = path.join(__dirname, 'uploads');
+if (!fs.existsSync(uploadsDir)) {
+  fs.mkdirSync(uploadsDir);
+}
+
 // Set storage engine for Multer to store in the local disk
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
