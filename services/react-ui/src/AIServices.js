@@ -35,16 +35,16 @@ function AIServices() {
       return;
     }
 
-    const result5000 = await uploadToEndpoint('http://localhost:5000/route', 'image');
-    console.log('Response from port 5000:', result5000);
+    //const result1000 = await uploadToEndpoint('http://localhost:1000/uploadS3', 'file');
+    //console.log('Response from port 1000:', result1000);
 
-    const result1000 = await uploadToEndpoint('http://localhost:1000/uploadS3', 'file');
-    console.log('Response from port 1000:', result1000);
+    const res_json = await uploadToEndpoint('http://localhost:5000/route', 'image');
+    console.log('Response from port 5000:', res_json);
 
-    if (result5000 && result1000) {
+    if (res_json) {             // && result1000
       // Handle the results from both requests as needed
       // For example, you could merge the results or display them separately
-      setResult(result5000); // You can change this to handle both results as needed
+      setResult(res_json); // You can change this to handle both results as needed
       setError(null); // Clear any previous errors
 
       // Calculate and store image dimensions

@@ -39,27 +39,6 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 
-// Configure AWS SDK
-//const s3 = new AWS.S3({
-//  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-//  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-//  region: process.env.AWS_REGION
-//});
-//
-//const upload = multer({
-//  storage: multerS3({
-//    s3: s3,
-//    bucket: process.env.AWS_BUCKET_NAME,
-//    acl: 'public-read',
-//    metadata: function (req, file, cb) {
-//      cb(null, { fieldName: file.fieldname });
-//    },
-//    key: function (req, file, cb) {
-//      cb(null, Date.now().toString() + '-' + file.originalname);
-//    }
-//  })
-//});
-
 app.post('/route', upload.single('image'), async (req, res) => {
 
   if (!req.file) {
@@ -87,56 +66,13 @@ app.post('/route', upload.single('image'), async (req, res) => {
   };
 
   const response_s3 = await uploadToEndpoint('http://localhost:1000/uploadS3', 'file');
-  // console.log('Response from port 1000:', response_s3);
+  console.log('Response from port 1000:', response_s3.data);
+  
 
   const response_detection = await uploadToEndpoint('http://localhost:8000/detect', 'file');
   // console.log('Response from port 8000:', response_detection);
 
   res.status(200).json(response_detection.data);
-
-  //const filePath = path.join(__dirname, req.file.path);
-  //console.log('RequestType',req.file.mimetype)
-  //console.log('RequestFileName',req.file.originalname)
-  // // try {
-  // //   // Send file to AI service
-  // //   const formData = new FormData();
-  // //   formData.append('file', fs.createReadStream(filePath));
-  // //   //formData.append('file', req.file.buffer, {
-  // //   //  filename: req.file.originalname,
-  // //   //  contentType: req.file.mimetype
-  // //   //});
-  // //   ///////////////////////
-  // //   const response1 = await axios.post('http://localhost:8000/detect', formData, {
-  // //     headers: { 'Content-Type': 'multipart/form-data' }
-  // //   });
-
-    ////const response2 = await axios.post('http://localhost:1000/uploadS3', formData, {
-    ////  headers: { 'Content-Type': 'multipart/form-data' }
-    ////});
-    //console.log(response1.data)
-  // //  res.status(200).json(response1.data);
-    ///////////////////////////////
-
-    //axios.all([
-    //  axios.post('http://localhost:8000/detect', formData, {
-    //    headers: { 'Content-Type': 'multipart/form-data' }
-    //  }),
-    //  axios.post('http://localhost:1000/uploadS3', formData, {
-    //    headers: { 'Content-Type': 'multipart/form-data' }
-    //  })
-    //]).then(axios.spread((aiInfRes, uploadS3Res) => {
-    //    res.status(200).json({ inference: aiInfRes.data, S3: uploadS3Res.data });
-    //}));
-    
-  // //} catch (err) {
-  // //  console.error(err);
-  // //  res.status(500).json({ message: 'Gateway Server Failed', error: err.message });
-  // //}
-  
-  //res.send({
-  //  message: 'File uploaded successfully!',
-  //  fileUrl: req.file.path
-  //});
 });
 
 app.listen(5000, () => {
