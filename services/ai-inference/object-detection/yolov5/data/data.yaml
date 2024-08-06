@@ -1,0 +1,12 @@
+names:
+- turkey
+nc: 1
+roboflow:
+  license: Private
+  project: turkeyactivity
+  url: https://app.roboflow.com/myworld-fczif/turkeyactivity/1
+  version: 1
+  workspace: myworld-fczif
+test: ../TurkeyActivity-1/test/images
+train: ../TurkeyActivity-1/train/images
+val: ../TurkeyActivity-1/valid/images
